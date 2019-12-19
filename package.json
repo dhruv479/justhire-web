@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "node server.js",
     "unit": "jest",
     "test": "cross-env NODE_ENV=testing jest",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
