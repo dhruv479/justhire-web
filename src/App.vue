@@ -1,13 +1,17 @@
 <template>
   <div id="app">
+    <HeaderHome />
     <router-view />
     <div class="animation" />
   </div>
 </template>
 
 <script>
+import HeaderHome from './components/headers/HeaderHome';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {HeaderHome}
 };
 </script>
 <style>

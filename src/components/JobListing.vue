@@ -1,8 +1,10 @@
 <template>
   <div>
-    <HeaderHome />
     <div class="listing-card">
-      <div class="job-card" v-for="post in jobListing" :key="post._id">
+      <div v-if="filteredJobs.length===0">
+        <h3>No Jobs Available, Please try after sometime!</h3>
+      </div>
+      <div class="job-card" v-for="post in filteredJobs" :key="post._id">
         <div class="flex-align">
           <div v-text="post.title" class="job-title" />
           <button
@@ -10,9 +12,8 @@
             type="button"
             @click="handleApplication(post)"
             class="btn btn-primary"
-          >
-            Apply
-          </button>
+          >Apply</button>
+          <button v-else type="button" disabled class="btn btn-outline-primary">Applied</button>
         </div>
         <div class="job-description" v-text="post.description" />
         <span class="recruiter-info">
@@ -25,12 +26,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import HeaderHome from './headers/HeaderHome';
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'JobListing',
-  components: { HeaderHome },
   data() {
     return {};
   },
@@ -38,24 +37,26 @@ export default {
     ...mapGetters({
       jobListing: 'getJobList',
       appliedJobs: 'getAppliedJobs'
-    })
-  },
-  watch: {
-    jobListing: function() {
-      for (let i = 0; i < this.appliedJobs.length; i++) {
-        for (let j = 0; j < this.jobListing.length; j++) {
-          if (this.appliedJobs[i].jobId === this.jobListing[j]._id) {
-            this.jobListing[j].applied = true;
+    }),
+    filteredJobs: {
+      get: function() {
+        let applied = this.appliedJobs.map(applied => {
+          return applied.jobId;
+        });
+        return this.jobListing.map(job => {
+          if (applied.indexOf(job._id) > -1) {
+            return {...job, applied: true};
           }
-        }
+          return job;
+        });
       }
     }
   },
   mounted() {
-    this.$store.dispatch('getJobListing');
+    this.$store.dispatch('getAppliedJobs');
   },
   created() {
-    this.$store.dispatch('getAppliedJobs');
+    this.$store.dispatch('getJobListing');
   },
   methods: {
     handleApplication(post) {
@@ -73,7 +74,7 @@ label {
   width: 90%;
 }
 .listing-card {
-  margin: 45px 100px;
+  margin: 110px 100px 50px;
   box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   width: 85%;

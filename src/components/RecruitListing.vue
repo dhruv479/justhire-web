@@ -1,27 +1,17 @@
 <template>
   <div>
-    <HeaderHome />
-    <!-- <button type="button" @click="openAddPost" class="btn btn-success">
-      Add Post
-    </button> -->
     <div class="listing-card">
       <div class="title">
         <h2>Job Posts</h2>
-        <button type="button" @click="openAddPost" class="btn btn-outline-success">
-          Add Post
-        </button>
+        <button type="button" @click="openAddPost" class="btn btn-outline-success">Add Post</button>
       </div>
       <div class="job-card" v-for="post in recruiterListing" :key="post._id">
         <div class="flex-align">
           <div v-text="post.title" class="job-title" />
-          <button type="button" @click="openPostEdit(post)" class="btn btn-primary">
-            Edit
-          </button>
+          <button type="button" @click="openPostEdit(post)" class="btn btn-primary">Edit</button>
         </div>
         <div class="job-description" v-text="post.description" />
-        <span class="applicant-info" @click="openApplicants(post._id)">
-          Show Applicants
-        </span>
+        <span class="applicant-info" @click="openApplicants(post._id)">Show Applicants</span>
       </div>
     </div>
 
@@ -59,11 +49,9 @@
       </div>
     </VuexplosionModal>
 
-    <!-- Modal for Adding New Post/ Editing Post -->
+    <!-- Modal to show Job Applicants -->
     <VuexplosionModal :visible="showApplicants" @close="closeApplicants">
-      <div slot="title">
-        Job Applicants
-      </div>
+      <div slot="title">Job Applicants</div>
       <div slot="body">
         <div class="add-modal">
           <table class="table">
@@ -85,11 +73,10 @@
 <script>
 import {mapGetters} from 'vuex';
 import VuexplosionModal from './custom/VueModal';
-import HeaderHome from './headers/HeaderHome';
 
 export default {
   name: 'RecruitListing',
-  components: {VuexplosionModal, HeaderHome},
+  components: {VuexplosionModal},
   data() {
     return {
       showAddPost: false,
@@ -147,7 +134,7 @@ label {
   width: 90%;
 }
 .listing-card {
-  margin: 45px 100px;
+  margin: 110px 100px 50px;
   box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   width: 85%;

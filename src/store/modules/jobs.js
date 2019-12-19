@@ -26,7 +26,7 @@ export const jobs = {
     updateJobPost: (state, value) => {
       state.recruiterListing.map((post, index) => {
         if (post._id === value._id) {
-          state.recruiterListing[index] = value;
+          Vue.set(state.recruiterListing, index, value);
         }
       });
     },
@@ -41,9 +41,9 @@ export const jobs = {
     },
     addApplication: (state, value) => {
       state.appliedJobs.push(value);
-      state.jobListing = state.jobListing.filter(job => {
-        return job._id !== value.jobId;
-      });
+      // state.jobListing = state.jobListing.filter(job => {
+      //   return job._id !== value.jobId;
+      // });
     }
   },
   actions: {

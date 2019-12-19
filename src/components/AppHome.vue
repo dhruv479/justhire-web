@@ -1,16 +1,12 @@
 <template>
   <div>
-    <HeaderHome />
     <img src="@/assets/jh.jpg" alt="home_page" />
   </div>
 </template>
 
 <script>
-import HeaderHome from './headers/HeaderHome';
-
 export default {
   name: 'AppHome',
-  components: {HeaderHome},
   data() {
     return {};
   }

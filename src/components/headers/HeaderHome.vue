@@ -29,15 +29,30 @@
             </label>
             <label>
               Email Address:
-              <input type="email" v-model="modalUser.email" class="form-control" required />
+              <input
+                type="email"
+                v-model="modalUser.email"
+                class="form-control"
+                required
+              />
             </label>
             <label>
               Password:
-              <input type="password" v-model="modalUser.password" class="form-control" required />
+              <input
+                type="password"
+                v-model="modalUser.password"
+                class="form-control"
+                required
+              />
             </label>
             <label v-if="modalUser.userType === '1'">
               Company Name:
-              <input type="text" v-model="modalUser.company" class="form-control" required />
+              <input
+                type="text"
+                v-model="modalUser.company"
+                class="form-control"
+                required
+              />
             </label>
             <br />
             <br />
@@ -58,11 +73,21 @@
             <br />
             <label>
               Email Address:
-              <input type="email" v-model="modalUser.email" class="form-control" required />
+              <input
+                type="email"
+                v-model="modalUser.email"
+                class="form-control"
+                required
+              />
             </label>
             <label>
               Password:
-              <input type="password" v-model="modalUser.password" class="form-control" required />
+              <input
+                type="password"
+                v-model="modalUser.password"
+                class="form-control"
+                required
+              />
             </label>
             <br />
             <br />
@@ -145,6 +170,9 @@ header {
   justify-content: space-between;
   padding: 0 20px;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .register-modal {
   width: 350px;
