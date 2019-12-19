@@ -7,22 +7,14 @@
     <div class="listing-card">
       <div class="title">
         <h2>Job Posts</h2>
-        <button
-          type="button"
-          @click="openAddPost"
-          class="btn btn-outline-success"
-        >
+        <button type="button" @click="openAddPost" class="btn btn-outline-success">
           Add Post
         </button>
       </div>
       <div class="job-card" v-for="post in recruiterListing" :key="post._id">
         <div class="flex-align">
           <div v-text="post.title" class="job-title" />
-          <button
-            type="button"
-            @click="openPostEdit(post)"
-            class="btn btn-primary"
-          >
+          <button type="button" @click="openPostEdit(post)" class="btn btn-primary">
             Edit
           </button>
         </div>
@@ -45,12 +37,7 @@
             <br />
             <label>
               Title:
-              <input
-                type="text"
-                v-model="modalPost.title"
-                class="form-control"
-                required
-              />
+              <input type="text" v-model="modalPost.title" class="form-control" required />
             </label>
             <label>
               Description:
@@ -96,13 +83,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import VuexplosionModal from './custom/VueModal';
 import HeaderHome from './headers/HeaderHome';
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'RecruitListing',
-  components: { VuexplosionModal, HeaderHome },
+  components: {VuexplosionModal, HeaderHome},
   data() {
     return {
       showAddPost: false,

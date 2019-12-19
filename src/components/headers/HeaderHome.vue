@@ -29,30 +29,15 @@
             </label>
             <label>
               Email Address:
-              <input
-                type="email"
-                v-model="modalUser.email"
-                class="form-control"
-                required
-              />
+              <input type="email" v-model="modalUser.email" class="form-control" required />
             </label>
             <label>
               Password:
-              <input
-                type="password"
-                v-model="modalUser.password"
-                class="form-control"
-                required
-              />
+              <input type="password" v-model="modalUser.password" class="form-control" required />
             </label>
             <label v-if="modalUser.userType === '1'">
               Company Name:
-              <input
-                type="text"
-                v-model="modalUser.company"
-                class="form-control"
-                required
-              />
+              <input type="text" v-model="modalUser.company" class="form-control" required />
             </label>
             <br />
             <br />
@@ -73,21 +58,11 @@
             <br />
             <label>
               Email Address:
-              <input
-                type="email"
-                v-model="modalUser.email"
-                class="form-control"
-                required
-              />
+              <input type="email" v-model="modalUser.email" class="form-control" required />
             </label>
             <label>
               Password:
-              <input
-                type="password"
-                v-model="modalUser.password"
-                class="form-control"
-                required
-              />
+              <input type="password" v-model="modalUser.password" class="form-control" required />
             </label>
             <br />
             <br />
@@ -102,8 +77,8 @@
 </template>
 
 <script>
-import VuexplosionModal from './../custom/VueModal';
 import {mapGetters} from 'vuex';
+import VuexplosionModal from './../custom/VueModal';
 
 export default {
   name: 'HeaderHome',
@@ -133,7 +108,6 @@ export default {
     handleLogin(e) {
       e.preventDefault();
       this.$store.dispatch('loginUser', this.modalUser).then(userType => {
-        console.log(userType);
         if (userType === 0) {
           this.$router.push({path: '/jobs'});
         } else {
@@ -143,7 +117,6 @@ export default {
       this.closeLogin();
     },
     openLogin() {
-      console.log(this);
       this.showLogin = !this.showLogin;
     },
     closeLogin() {

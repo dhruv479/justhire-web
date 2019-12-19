@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderHome />
-    <img src="/src/assets/jh.jpg" alt="home_page" />
+    <img src="@/assets/jh.jpg" alt="home_page" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import HeaderHome from './headers/HeaderHome';
 
 export default {
   name: 'AppHome',
-  components: { HeaderHome },
+  components: {HeaderHome},
   data() {
     return {};
   }
