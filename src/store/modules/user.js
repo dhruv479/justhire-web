@@ -21,7 +21,6 @@ export const user = {
     registerUser: ({}, payload) => {
       UserService.registerUser(payload)
         .then(response => {
-          console.log(Vue, response);
           Vue.$toast.success(response.data.message);
         })
         .catch(error => {
