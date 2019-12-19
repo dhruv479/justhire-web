@@ -25,6 +25,7 @@ export const user = {
         })
         .catch(error => {
           Vue.$log.error(error);
+          Vue.$toast.error(error.response.data.message);
         });
     },
     loginUser: ({commit}, payload) => {
@@ -37,6 +38,8 @@ export const user = {
         })
         .catch(error => {
           Vue.$log.error(error);
+          Vue.$toast.error(error.response.data.message);
+          return null;
         });
     },
     logout: ({commit}) => {

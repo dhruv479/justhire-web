@@ -26,6 +26,18 @@ if (localStorage.getItem('sid') !== null && localStorage.getItem('sid') !== '') 
   store.commit('setUserAuth', true);
 }
 
+router.beforeEach((to, from, next) => {
+  if (to.path !== '/') {
+    if (localStorage.getItem('sid') === null || localStorage.getItem('sid') === '') {
+      location = '/';
+    } else {
+      store.commit('setUserAuth', true);
+    }
+  }
+  document.title = to.meta.title;
+  next();
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

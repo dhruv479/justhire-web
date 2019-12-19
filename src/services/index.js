@@ -34,7 +34,7 @@ instance.interceptors.response.use(
     // Do something with response error
     if (error.response.status === 401) {
       localStorage.removeItem('sid');
-      location.reload();
+      location = '/';
     }
     Vue.$log.error(error);
     return Promise.reject(error);

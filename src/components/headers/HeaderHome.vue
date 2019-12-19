@@ -135,7 +135,7 @@ export default {
       this.$store.dispatch('loginUser', this.modalUser).then(userType => {
         if (userType === 0) {
           this.$router.push({path: '/jobs'});
-        } else {
+        } else if (userType === 1) {
           this.$router.push({path: '/recruit'});
         }
       });

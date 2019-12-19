@@ -1,4 +1,7 @@
 const parseJwt = token => {
+  if (token === null) {
+    return {};
+  }
   const base64Url = token.split('.')[1];
   if (typeof base64Url === 'undefined') {
     location = `${process.env.VUE_APP_LOGIN_URL}?redirect=${window.location.href}`;

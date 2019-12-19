@@ -41,9 +41,6 @@ export const jobs = {
     },
     addApplication: (state, value) => {
       state.appliedJobs.push(value);
-      // state.jobListing = state.jobListing.filter(job => {
-      //   return job._id !== value.jobId;
-      // });
     }
   },
   actions: {
@@ -64,6 +61,7 @@ export const jobs = {
         })
         .catch(error => {
           Vue.$log.error(error);
+          Vue.$toast.error(error.response.data.message);
         });
     },
     editJobPost: ({commit}, payload, postId = payload._id, userId = utils.getUserId()) => {
@@ -74,6 +72,7 @@ export const jobs = {
         })
         .catch(error => {
           Vue.$log.error(error);
+          Vue.$toast.error(error.response.data.message);
         });
     },
     getJobListing: ({commit}, userId = utils.getUserId()) => {
@@ -93,6 +92,7 @@ export const jobs = {
         })
         .catch(error => {
           Vue.$log.error(error);
+          Vue.$toast.error(error.response.data.message);
         });
     },
     getAppliedJobs: ({commit}, userId = utils.getUserId()) => {
